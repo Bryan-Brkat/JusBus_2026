@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>JusBus 2026</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Cards 1–4 -->
+  <div class="card active" id="card1">
+    <h2>Good morning! 🐍</h2>
+    <p>I hope this message finds you well</p>
+  </div>
+
+  <div class="card" id="card2">
+    <h2>Happy birthday again! 🐍🐍</h2>
+    <p>It is a good day to celebrate you</p>
+  </div>
+
+  <div class="card" id="card3">
+    <h2>Apologies! 🐍🐍🐍</h2>
+    <p>I thought I added it into my calendar but we shall do better next time</p>
+  </div>
+
+  <div class="card" id="card4">
+    <h2>Anyways! 🐍🐍🐍🐍</h2>
+    <p>Here's a small token of appreciation for you but... you'll have to work for it</p>
+  </div>
+
+  <!-- Card 5: Quiz -->
+  <div class="card" id="card5">
+    <div class="quiz-wrap">
+      <div class="quiz-step active" id="q1">
+        <p class="quiz-label">Question 1 of 3</p>
+        <h2>What is 1 + 1?</h2>
+        <input type="text" id="a1" class="quiz-input" placeholder="Your answer…" autocomplete="off" />
+        <p class="quiz-error" id="e1"></p>
+        <button class="quiz-btn" onclick="checkQ1()">Submit</button>
+      </div>
+      <div class="quiz-step" id="q2">
+        <p class="quiz-label">Question 2 of 3</p>
+        <h2>What is Sarawak's goated meal?</h2>
+        <input type="text" id="a2" class="quiz-input" placeholder="Your answer…" autocomplete="off" />
+        <p class="quiz-error" id="e2"></p>
+        <button class="quiz-btn" onclick="checkQ2()">Submit</button>
+      </div>
+      <div class="quiz-step" id="q3">
+        <p class="quiz-label">Question 3 of 3</p>
+        <h2>What is Bryan's favourite colour?</h2>
+        <input type="text" id="a3" class="quiz-input" placeholder="Your answer…" autocomplete="off" />
+        <button class="quiz-btn" onclick="checkQ3()">Submit</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Card 6: Envelope + Letter -->
+  <div class="card" id="card6">
+    <div class="envelope-scene" id="envelopeScene">
+
+      <!-- Letter: starts hidden below, slides up when envelope opens -->
+      <div class="letter" id="letter">
+        <div class="letter-inner">
+          <p class="letter-text">
+            Dear Justine,<br><br>
+            Thanks for coming back into my life. You helped me navigate through a tough time back then and I'm grateful for that. I know that it's not impossible to be self-sufficient but it's always nice to have a good friend like you around. Something about familiar friends I guess.<br><br>
+            Time really do be flying. I still remember the carefree days back in highschool and the volatilities of your mood. Can't believe you don't hate me anymore. Legit miracle.<br><br>
+            Anyways, I think you're doing well for yourself or at least I perceive it that way. Proud of you regardless and I wish you nothing but the best. Take good care of yourself and yea I'm always here if you need a friend. Don't kill me, Yang.<br><br>
+            Your homie,<br>
+            Bob Billy
+          </p>
+          <button class="claim-btn" onclick="goToGift()">🎁 Claim Gift</button>
+        </div>
+      </div>
+
+      <!-- Envelope: slides down and off-screen when opened -->
+      <div class="envelope" id="envelope" onclick="openEnvelope()">
+        <div class="env-body">
+          <div class="env-flap" id="envFlap"></div>
+          <div class="env-left"></div>
+          <div class="env-right"></div>
+          <div class="env-bottom"></div>
+          <div class="env-front">
+            <span class="env-hint">Tap to open ✉️</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Card 7: Spotify Songs -->
+  <div class="card" id="card7">
+
+    <h2>🎶 For You Songs 🎶</h2>
+    <p>Some songs that may provide comfort during your rough times!!</p>
+
+    <p class="song-caption">Song 1: Motivation</p>
+    <iframe style="border-radius:12px"
+            src="https://open.spotify.com/embed/track/3gVYa5bvsuvBegKEIEY8Mk?utm_source=generator"
+            width="100%" height="152" frameborder="0"
+            allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+            loading="lazy"></iframe>
+
+    <p class="song-caption">Song 2: Comfort</p>
+    <iframe style="border-radius:12px; margin-top: 10px;"
+            src="https://open.spotify.com/embed/track/4VI7berVSzuaBt1BGrBksC?utm_source=generator"
+            width="100%" height="152" frameborder="0"
+            allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+            loading="lazy"></iframe>
+
+    <p class="song-caption">Song 3: Nostalgic v1</p>
+    <iframe style="border-radius:12px; margin-top: 10px;"
+            src="https://open.spotify.com/embed/track/3E6iea9uEmB7gRru4lyP6h?utm_source=generator"
+            width="100%" height="152" frameborder="0"
+            allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+            loading="lazy"></iframe>
+
+    <p class="song-caption">Song 4: Nostalgic v2</p>
+    <iframe style="border-radius:12px; margin-top: 10px;"
+            src="https://open.spotify.com/embed/track/4RihdwyUf7waUlwIWghgOD?utm_source=generator"
+            width="100%" height="152" frameborder="0"
+            allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+            loading="lazy"></iframe>
+
+    <p class="song-caption">Song 5: Vibes v1</p>
+    <iframe style="border-radius:12px; margin-top: 10px;"
+            src="https://open.spotify.com/embed/track/2hJNZcuMgdH4Zv9W7oBDFv?utm_source=generator"
+            width="100%" height="152" frameborder="0"
+            allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+            loading="lazy"></iframe>
+
+    <p class="song-caption">Song 6: Vibes v2</p>
+    <iframe style="border-radius:12px; margin-top: 10px;"
+            src="https://open.spotify.com/embed/track/3CB5Sjh1COpbybWyOYljzQ?utm_source=generator"
+            width="100%" height="152" frameborder="0"
+            allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+            loading="lazy"></iframe>
+  </div>
+
+  <!-- Global Next button (cards 1–4 only) -->
+  <button id="nextBtn">Next</button>
+
+  <script>
+    // ── Card navigation (cards 1–4) ──────────────────────────────────────
+    const cards = document.querySelectorAll('.card');
+    const nextBtn = document.getElementById('nextBtn');
+    let current = 0;
+
+    nextBtn.addEventListener('click', () => {
+      cards[current].classList.remove('active');
+      current++;
+      cards[current].classList.add('active');
+      if (current >= 4) nextBtn.style.display = 'none';
+    });
+
+    // ── Quiz ─────────────────────────────────────────────────────────────
+    function showStep(fromId, toId) {
+      document.getElementById(fromId).classList.remove('active');
+      document.getElementById(toId).classList.add('active');
+    }
+
+    function advanceFromQuiz() {
+      cards[current].classList.remove('active');
+      current++;
+      cards[current].classList.add('active');
+    }
+
+    function checkQ1() {
+      const val = document.getElementById('a1').value.trim();
+      if (val === '2') {
+        showStep('q1', 'q2');
+      } else {
+        document.getElementById('e1').textContent = 'Hmm, try again! 🤔';
+        document.getElementById('a1').classList.add('shake');
+        setTimeout(() => document.getElementById('a1').classList.remove('shake'), 500);
+      }
+    }
+
+    function checkQ2() {
+      const val = document.getElementById('a2').value.trim().toLowerCase();
+      if (val === 'laksa') {
+        showStep('q2', 'q3');
+      } else {
+        document.getElementById('e2').textContent = 'Bruh, its not that hard... 🤔';
+        document.getElementById('a2').classList.add('shake');
+        setTimeout(() => document.getElementById('a2').classList.remove('shake'), 500);
+      }
+    }
+
+    function checkQ3() {
+      const val = document.getElementById('a3').value.trim();
+      if (val.length === 0) return;
+      advanceFromQuiz();
+    }
+
+    ['a1','a2','a3'].forEach((id, i) => {
+      document.getElementById(id).addEventListener('keydown', e => {
+        if (e.key === 'Enter') [checkQ1, checkQ2, checkQ3][i]();
+      });
+    });
+
+    // ── Envelope animation ────────────────────────────────────────────────
+    let envelopeOpened = false;
+
+    function openEnvelope() {
+      if (envelopeOpened) return;
+      envelopeOpened = true;
+
+      const envelope = document.getElementById('envelope');
+      const letter   = document.getElementById('letter');
+      const flap     = document.getElementById('envFlap');
+      const hint     = envelope.querySelector('.env-hint');
+
+      if (hint) hint.style.opacity = '0';
+
+      // Step 1: flap folds open
+      flap.classList.add('open');
+
+      // Step 2: letter slides up, envelope slides down and off-screen
+      setTimeout(() => {
+        letter.classList.add('slide-up');
+        envelope.classList.add('shrink'); // translateY(125%) — fully clipped
+      }, 520);
+    }
+
+    function goToGift() {
+      cards[current].classList.remove('active');
+      current++;
+      cards[current].classList.add('active');
+    }
+  </script>
+
+</body>
+</html>

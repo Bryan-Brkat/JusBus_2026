@@ -1,0 +1,338 @@
+/* ── Base ─────────────────────────────────────────────────────────────── */
+* { box-sizing: border-box; }
+
+body {
+  font-family: 'Verdana', 'Segoe UI', sans-serif;
+  background: linear-gradient(160deg, #fff9c4 0%, #ffeef8 60%, #ffffff 100%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  margin: 0;
+  padding: 20px;
+  line-height: 1.6;
+}
+
+/* ── Cards ───────────────────────────────────────────────────────────── */
+.card {
+  display: none;
+  background: white;
+  border-radius: 20px;
+  padding: 28px 24px;
+  width: 90%;
+  max-width: 380px;
+  text-align: center;
+  box-shadow: 0 6px 24px rgba(0,0,0,0.10);
+  animation: fadeIn 0.5s ease-in-out;
+  position: relative;
+}
+
+.card.active { display: block; }
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(12px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+h2 {
+  color: #2d3436;
+  margin-bottom: 10px;
+  font-family: 'Trebuchet MS', Arial, sans-serif;
+  font-size: 1.4rem;
+}
+
+p {
+  font-size: 1rem;
+  color: #333;
+}
+
+/* ── Next button (cards 1–4) ─────────────────────────────────────────── */
+#nextBtn {
+  margin-top: 20px;
+  padding: 12px 28px;
+  background: white;
+  color: #2d3436;
+  border: 2px solid #d4a017;
+  border-radius: 12px;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 4px 12px rgba(212,160,23,0.3);
+}
+#nextBtn:hover {
+  transform: scale(1.05);
+  box-shadow: 0 6px 18px rgba(212,160,23,0.5);
+}
+
+/* ── Quiz ─────────────────────────────────────────────────────────────── */
+.quiz-wrap { width: 100%; }
+
+.quiz-step { display: none; animation: fadeIn 0.4s ease; }
+.quiz-step.active { display: block; }
+
+.quiz-label {
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: #d4a017;
+  margin-bottom: 6px;
+}
+
+.quiz-input {
+  width: 100%;
+  padding: 12px 16px;
+  border: 2px solid #e0d0a0;
+  border-radius: 12px;
+  font-size: 1rem;
+  font-family: inherit;
+  outline: none;
+  margin-top: 12px;
+  transition: border-color 0.2s;
+  text-align: center;
+}
+.quiz-input:focus { border-color: #d4a017; }
+
+.quiz-btn {
+  margin-top: 16px;
+  padding: 11px 28px;
+  background: #d4a017;
+  color: white;
+  border: none;
+  border-radius: 12px;
+  font-size: 15px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.15s;
+}
+.quiz-btn:hover { background: #b8880f; transform: scale(1.04); }
+
+.quiz-error {
+  font-size: 0.85rem;
+  color: #e17055;
+  min-height: 20px;
+  margin-top: 6px;
+  font-weight: 600;
+}
+
+@keyframes shake {
+  0%,100% { transform: translateX(0); }
+  20%      { transform: translateX(-8px); }
+  40%      { transform: translateX(8px); }
+  60%      { transform: translateX(-5px); }
+  80%      { transform: translateX(5px); }
+}
+.shake { animation: shake 0.45s ease; }
+
+/* ── Envelope card ────────────────────────────────────────────────────── */
+#card6 {
+  padding: 16px 16px 24px;
+}
+
+.envelope-scene {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  position: relative;
+  min-height: 680px;
+}
+
+/* ── Letter ───────────────────────────────────────────────────────────── */
+.letter {
+  width: 94%;
+  max-width: 330px;
+  background: #fffdf4;
+  border: 1.5px solid #e8ddb5;
+  border-radius: 4px;
+  position: absolute;
+  top: 8px;
+  z-index: 1;
+
+  /* Starts tucked below, hidden under the envelope */
+  opacity: 0;
+  transform: translateY(230px);
+  transition:
+    transform 0.85s cubic-bezier(0.22, 1, 0.36, 1),
+    opacity   0.5s ease;
+  box-shadow: 0 4px 18px rgba(0,0,0,0.10);
+}
+
+.letter.slide-up {
+  opacity: 1;
+  transform: translateY(0);
+  z-index: 5;
+}
+
+.letter-inner {
+  padding: 22px 20px 18px;
+}
+
+.letter-inner::-webkit-scrollbar { width: 4px; }
+.letter-inner::-webkit-scrollbar-track { background: transparent; }
+.letter-inner::-webkit-scrollbar-thumb { background: #d4b86a; border-radius: 2px; }
+
+.letter-text {
+  font-family: 'Georgia', serif;
+  font-size: 0.87rem;
+  color: #3a3020;
+  line-height: 1.8;
+  text-align: left;
+  margin: 0 0 18px;
+}
+
+.claim-btn {
+  display: block;
+  width: 100%;
+  padding: 12px;
+  background: #d4a017;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  font-size: 15px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.15s;
+}
+.claim-btn:hover { background: #b8880f; transform: scale(1.02); }
+
+/* ── Envelope ─────────────────────────────────────────────────────────── */
+.envelope {
+  width: 94%;
+  max-width: 330px;
+  position: absolute;
+  bottom: 0;
+  z-index: 10;
+  cursor: pointer;
+  filter: drop-shadow(0 8px 20px rgba(0,0,0,0.18));
+  /* Only animate transform so the slide-down is smooth */
+  transition: transform 0.9s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/*
+  Slide the envelope down so it sits visibly below the letter.
+  translateY(155px) nudges it from its resting position at the bottom
+  of the scene into the space beneath the letter.
+*/
+.envelope.shrink {
+  transform: translateY(155px);
+  pointer-events: none;
+  cursor: default;
+  z-index: 0; /* letter (z-index:5) always renders on top */
+}
+
+.env-body {
+  position: relative;
+  width: 100%;
+  padding-bottom: 62%;
+}
+
+.env-bottom {
+  position: absolute;
+  inset: 0;
+  background: #f5e6c0;
+  border-radius: 4px 4px 10px 10px;
+  border: 2.5px solid #c9aa72;
+}
+
+.env-left {
+  position: absolute;
+  bottom: 0; left: 0;
+  width: 0; height: 0;
+  border-style: solid;
+  border-width: 0 0 190px 145px;
+  border-color: transparent transparent #e8d49a transparent;
+  z-index: 2;
+}
+
+.env-right {
+  position: absolute;
+  bottom: 0; right: 0;
+  width: 0; height: 0;
+  border-style: solid;
+  border-width: 0 145px 190px 0;
+  border-color: transparent #e8d49a transparent transparent;
+  z-index: 2;
+}
+
+.env-front {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 3;
+}
+
+.env-hint {
+  font-size: 0.8rem;
+  color: #7a6030;
+  font-weight: 600;
+  letter-spacing: 0.4px;
+  margin-top: 36%;
+  transition: opacity 0.3s;
+  pointer-events: none;
+  user-select: none;
+}
+
+.env-flap {
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 50%;
+  background: #f0d898;
+  border: 2.5px solid #c9aa72;
+  border-bottom: none;
+  border-radius: 4px 4px 0 0;
+  clip-path: polygon(0 0, 100% 0, 50% 100%);
+  transform-origin: top center;
+  transform: rotateX(0deg);
+  transition: transform 0.5s ease;
+  z-index: 5;
+  backface-visibility: hidden;
+}
+
+.env-flap.open {
+  transform: rotateX(180deg);
+  background: #e8cc7a;
+}
+
+/* ── Spotify / Songs card ─────────────────────────────────────────────── */
+#card7 {
+  padding-top: 20px;
+}
+
+/* ── Song captions ────────────────────────────────────────────────────── */
+.song-caption {
+  font-style: italic;
+  font-weight: 600;
+  margin: 14px 0 4px;
+  font-size: 0.82rem;
+  color: #7a6030;
+  letter-spacing: 0.3px;
+}
+
+/* ── Mobile ───────────────────────────────────────────────────────────── */
+@media (max-width: 600px) {
+  h2 { font-size: 1.2rem; }
+  p  { font-size: 0.95rem; }
+
+  #nextBtn {
+    width: 70%;
+    font-size: 13px;
+    padding: 10px 16px;
+  }
+
+  .envelope-scene { min-height: 560px; }
+
+  .letter-inner {
+    padding: 16px 14px 14px;
+  }
+
+  .letter-text { font-size: 0.82rem; }
+
+  .env-hint { font-size: 0.72rem; }
+
+  .song-caption { font-size: 0.75rem; }
+}
